@@ -41,7 +41,9 @@ func (m *socketConn) Start() {
 }
 
 func (m *socketConn) Stop() {
+	m.waitMsgHandle()
 	close(m.close)
+	m.conn.Close()
 }
 
 func (m *socketConn) ReadMsg() {
@@ -98,4 +100,15 @@ func (m *socketConn) Handle(msg *message.Message) {
 		return
 	}
 	hm.H(data, nil)
+}
+
+func (m *socketConn) waitMsgHandle() {
+	close(m.In)
+	for {
+		msg, ok := <-m.In
+		if !ok {
+			break
+		}
+		m.Handle(msg)
+	}
 }
