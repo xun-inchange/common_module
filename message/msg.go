@@ -2,10 +2,10 @@ package message
 
 import (
 	"bytes"
-	"common_module/g"
 	"encoding/binary"
 	"github.com/golang/protobuf/proto"
 	"log"
+	"x-common/g"
 )
 
 type Message struct {

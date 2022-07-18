@@ -1,13 +1,13 @@
 package ctx
 
 import (
-	"common_module/g"
-	"common_module/message"
 	"github.com/golang/protobuf/proto"
 	"io"
 	"log"
 	"net"
 	"reflect"
+	"x-common/g"
+	"x-common/message"
 )
 
 type Conner interface {
